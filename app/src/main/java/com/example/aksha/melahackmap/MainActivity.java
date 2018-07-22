@@ -1,6 +1,7 @@
 package com.example.aksha.melahackmap;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Debug;
 import android.provider.Settings;
@@ -218,13 +219,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btndummy= (Button) findViewById(R.id.btnDummy);
+
+        // Capture button clicks
+        btndummy.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        webviewactivity.class);
+                startActivity(myIntent);
+            }
+        });
+
 
 
     }
 
     public void RefreshMap()
     {
-
-
+        String smap = "https://www.arcgis.com/home/webmap/viewer.html?webmap=9d62ef957eb046e999f8ac3cd889ce98";
+        ArcGISMap map = new ArcGISMap(smap);
+        mMapView.setMap(map);
     }
 }
