@@ -28,15 +28,31 @@
         android:id="@+id/btnfoodtruck"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/dummy_icon"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnPerformances"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/btnfoodtruck"
         android:text="Performances" />
-
-
+    <Button
+        android:id="@+id/btnClasses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/btnPerformances"
+        android:text="Classes" />
+    <Button
+        android:id="@+id/btnOthers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/btnClasses"
+        android:text="Others" />
 </RelativeLayout>

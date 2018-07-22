@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mMapView =(MapView)findViewById(R.id.mapView);
 //        ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 34.056295, -117.195800, 16);
 
-        String smap = "https://dinocoproduction.maps.arcgis.com/home/webmap/viewer.html?webmap=b06b20e3deb84a36b3e5d96046daddde";
+        String smap = "https://www.arcgis.com/home/webmap/viewer.html?webmap=d9335f701eef4dc1be1ff5577905524e";
         String crowdsourceMap = "https://www.arcgis.com/home/webmap/viewer.html?webmap=a8d97240fa284e4fa8b98ac7c5be4951";
 
         ArcGISMap map = new ArcGISMap(smap);
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(View view) {
 
-
                                                 LayerList operationalLayers = mMapView.getMap().getOperationalLayers();
                                                 ArcGISMap newMap = mMapView.getMap();
                                                 String layername;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                                     for(Layer layer : operationalLayers)
                                                 {
                                                     layername= layer.getName();
-                                                    if(layername.equals("Foods"))
+                                                    if(layername.equals("Food"))
                                                     {
                                                         isFoodLayer = false;
                                                         FoodLayer = layer;
@@ -85,5 +84,113 @@ public class MainActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
+
+        final Button btnClasses = (Button) findViewById(R.id.btnClasses);
+        btnClasses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayerList operationalLayers = mMapView.getMap().getOperationalLayers();
+                ArcGISMap newMap = mMapView.getMap();
+                String layername;
+                int index=0;
+                if(isClassesLayer)
+                {
+                    for(Layer layer : operationalLayers)
+                    {
+                        layername= layer.getName();
+                        if(layername.equals("Class"))
+                        {
+                            isClassesLayer = false;
+                            ClassesLayer = layer;
+                            index = operationalLayers.indexOf(layer);
+                            newMap.getOperationalLayers().remove(index);
+                            mMapView.setMap(newMap);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //add the layer back.
+                    isClassesLayer = true;
+                    mMapView.getMap().getOperationalLayers().add(ClassesLayer);
+                }
+            }
+        });
+
+
+
+        final Button btnPerformances = (Button) findViewById(R.id.btnPerformances);
+        btnPerformances.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayerList operationalLayers = mMapView.getMap().getOperationalLayers();
+                ArcGISMap newMap = mMapView.getMap();
+                String layername;
+                int index=0;
+                if(isPerformanceLayer)
+                {
+                    for(Layer layer : operationalLayers)
+                    {
+                        layername= layer.getName();
+                        if(layername.equals("Performance"))
+                        {
+                            isPerformanceLayer = false;
+                            PerformanceLayer = layer;
+                            index = operationalLayers.indexOf(layer);
+                            newMap.getOperationalLayers().remove(index);
+                            mMapView.setMap(newMap);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //add the layer back.
+                    isPerformanceLayer = true;
+                    mMapView.getMap().getOperationalLayers().add(PerformanceLayer);
+                }
+            }
+        });
+
+
+        final Button btnOthers = (Button) findViewById(R.id.btnOthers);
+        btnOthers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayerList operationalLayers = mMapView.getMap().getOperationalLayers();
+                ArcGISMap newMap = mMapView.getMap();
+                String layername;
+                int index=0;
+                if(isOtherLayer)
+                {
+                    for(Layer layer : operationalLayers)
+                    {
+                        layername= layer.getName();
+                        if(layername.equals("Other"))
+                        {
+                            isOtherLayer = false;
+                            OtherLayer = layer;
+                            index = operationalLayers.indexOf(layer);
+                            newMap.getOperationalLayers().remove(index);
+                            mMapView.setMap(newMap);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //add the layer back.
+                    isOtherLayer = true;
+                    mMapView.getMap().getOperationalLayers().add(OtherLayer);
+                }
+            }
+        });
+
+
+
     }
 }
